@@ -16,8 +16,8 @@ code {
   width: 8vw;
 }
 
-.App{
-  height: 100%;
+.app{
+  min-height: 100vh !important;
   width: 100%;
   display: flex;
   background-image: url("https://images6.alphacoders.com/454/thumb-1920-454816.jpg");
@@ -25,8 +25,8 @@ code {
   background-size: cover;
   flex-direction: column;
   text-align: center;
+  
 }
-
 .logoTitulo{
   width: 8vw;
 }
@@ -43,6 +43,10 @@ code {
 .Titulo{
   color: white;
   margin: 0;
+  font-size: 3rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow:  0.1em 0.1em 0.1em blue;
+  margin-top: 3rem;
 }
 
 .ContenedorNav{
@@ -75,7 +79,7 @@ code {
 }
 .h2Carrousel{
   color: white;
-  text-shadow:  0.1em 0.1em 0.1em rgb(50, 157, 245);
+  text-shadow:  0.1em 0.1em 0.1em blue;
   font-family:cursive;
   font-size: 2.5rem;
   padding: 0rem;
@@ -157,3 +161,48 @@ code {
    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    color: white;
  }
+ .footer-ctn{
+   background-color: #00DDEB;
+   height: 15vh;
+   width: 100%;
+ }
+ .h1error{
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-shadow: 2px 2px 2px blue;
+   font-size: 2.4rem;
+ }
+ .h1cities{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 2px blue;
+  font-size: 2.4rem;
+}
+ .css-i4bv87-MuiSvgIcon-root{
+   color: white;
+   font-size: 1rem;
+ }
+ .MuiButton-root {
+   font-size: xx-large;
+ }
+.h1sombreado{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 2px black;
+  font-size: 3.5rem;
+  color: white;
+  transform: translateY(-6rem);
+}
+button{
+  text-decoration: none;
+}
+
+.contenedorFooter{
+  height: 15vh;
+}
