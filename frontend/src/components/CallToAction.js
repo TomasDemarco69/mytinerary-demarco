@@ -6,7 +6,7 @@ function Boton(){
         <div className="boton-ctn"> 
         <LinkRouter to="/Cities">  
         <button className="Botoncito">
-           <span>Cities</span>
+           <span>¡Discover the world!</span>
          </button>
          </LinkRouter>
          </div>

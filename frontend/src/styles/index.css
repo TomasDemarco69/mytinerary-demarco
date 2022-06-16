@@ -112,7 +112,6 @@ code {
   font-size: 18px;
   justify-content: center;
   line-height: 1em;
-  max-width: 40%;
   min-width: 140px;
   padding: 3px;
   text-decoration: none;
@@ -127,6 +126,7 @@ code {
  .Botoncito:active,
  .Botoncito:hover {
   outline: 0;
+  text-decoration: none;
  }
  
  .Botoncito span {
@@ -136,10 +136,12 @@ code {
   width: 100%;
   height: 100%;
   transition: 300ms;
+  text-decoration: none;
  }
  
  .Botoncito:hover span {
   background: none;
+  text-decoration: none;
  }
  
  .Botoncito:active {
@@ -149,6 +151,7 @@ code {
    display: flex;
    justify-content: center;
    align-items: center;
+   text-decoration: none;
  }
  .parrafo{
    display: flex;
@@ -189,20 +192,178 @@ code {
  .MuiButton-root {
    font-size: xx-large;
  }
-.h1sombreado{
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-shadow: 2px 2px 2px black;
-  font-size: 3.5rem;
-  color: white;
-  transform: translateY(-6rem);
-}
 button{
+  text-decoration: none;
+}
+span{
   text-decoration: none;
 }
 
 .contenedorFooter{
   height: 15vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.logofooter{
+  width: 3rem;
+  margin: 5px
+;
+}
+.footericonos{
+  display: flex;
+  flex-direction: row;
+  width: 33%;
+
+}
+footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.botonesFooterToTop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+ 
+}
+.boton-footer{
+align-items: center;
+  background-image: linear-gradient(144deg,#40338a, #5B42F3 50%,#00a5eb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #dfc4c4;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 22px;
+  justify-content: center;
+  line-height: 1em;
+  min-width: 20px;
+  padding: 7px;
+  margin: 4px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .3s;
+}
+.boton-footer:active,
+ .boton-footer:hover {
+  outline: 0;
+  text-decoration: none;
+ }
+ 
+ .Botoncito span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+  text-decoration: none;
+ }
+ 
+ .boton-footer:hover span {
+  background: none;
+  text-decoration: none;
+ }
+ 
+ .boton-footer:active {
+  transform: scale(0.9);
+ }
+.footertexto{
+  font-size: 1;
+  color: white;
+  width: 33%;
+  text-shadow:  0.1em 0.1em 0.1em rgb(12, 12, 12);
+}
+
+/* CITIES DETAILS */
+/* CITIES DETAILS */
+/* CITIES DETAILS */
+
+.ContenedorExplorer{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  flex-wrap: wrap;
+}
+.CtnDetalles{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  justify-content: center;
+  flex-direction: column;
+}
+.BotoncitoDetails{
+  margin-left: 25px;
+}
+.h1explorer{
+    display: flex;
+    padding-left: 25px;
+}
+.h1details{
+  color: rgb(255, 255, 255);
+  margin: 0;
+  font-size: 3rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow:  0.1em 0.1em 0.1em rgb(12, 12, 12);
+  margin-top: 3rem;
+}
+.searchExplorer{
+  width: 20vw;
+  height: 3vh;
+}
+.parrafoDetails{
+  background-color: #40338a;
+  z-index: 1;
+  font-size: 1.2rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  text-shadow:  0.1em 0.1em 0.1em rgb(12, 12, 12);
+}
+.contenedorDetails{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+   
+
+}
+@media (max-width: 550px) {
+  .contenedorFooter {
+    display: flex;
+    flex-direction: column-reverse;
+    
+  }
+  .logofooter{
+    width: 2.5rem;
+  }
+  .footertexto{
+    font-size: 0.7rem;
+  }
+  .imagenCarrousel{
+    height: 11rem;
+    width: 80%;
+  }
+  .h3Carrousel{
+    font-size: 1.3rem ;
+  }
+  .h1explorer{
+    font-size: 2.5rem;
+  }
+  .logonav{
+    width: 6rem;
+  }
+  .searchExplorer{
+    width: 40%;
+  }
+
 }

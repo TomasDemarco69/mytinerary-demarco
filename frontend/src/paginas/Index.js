@@ -1,14 +1,14 @@
 import React from "react";
 
-import Boton from "../components/Boton"
+import CallToAction from "../components/CallToAction"
 import Carrousel from "../components/Carrousel"
-import Fondo from "../components/Fondo"
+import Main from "../components/Main"
 
 function Home(){
     return(
         <> 
-        <Fondo/>
-        <Boton/>
+        <Main/>
+        <CallToAction/>
         <Carrousel/>
         </>
 

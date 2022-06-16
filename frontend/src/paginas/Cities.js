@@ -1,9 +1,10 @@
 import React from "react";
+import CitiesExplorer from "../components/CitiesExplorer";
 
 function Cities(){
     return(
         <div className="h1cities">
-            <h1 className="h1sombreado">This site is under development.</h1>
+            <CitiesExplorer></CitiesExplorer>
         </div>
     )
 }

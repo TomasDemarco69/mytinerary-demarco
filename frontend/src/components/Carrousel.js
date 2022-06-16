@@ -37,7 +37,7 @@ import Carousel from 'react-grid-carousel'
           imagen:"https://www.viajarmiami.com/img/guia-viaje-miami.jpg"
       },
       {
-          nombre:"Moscú",
+          nombre:"Moscow",
           imagen:"https://www.elviejotopo.com/wp-content/uploads/2016/03/1048934.jpg"
       },
       {
@@ -47,6 +47,10 @@ import Carousel from 'react-grid-carousel'
       {
           nombre:"Dubai",
           imagen:"https://www.costacruceros.com/content/dam/costa/costa-magazine/article-images/dubai-beaches/spiagge-dubai_mobile.jpg.image.694.390.low.jpg"
+      },
+      {
+        nombre:"Barcelona",
+        imagen:"https://i.natgeofe.com/n/295349af-5e41-4681-9497-58d72eaf8254/temple-barcelona-spain.jpg"
       }
   ]
 
@@ -69,7 +73,7 @@ responsiveLayout={[
   {
     breakpoint: 400,
     cols: 2,
-    rows: 4,
+    rows: 2,
     gap: 2,
     loop: true, 
   },
