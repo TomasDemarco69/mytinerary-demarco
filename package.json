@@ -19,10 +19,14 @@
   },
   "homepage": "https://github.com/TomasDemarco69/mytinerary-demarco#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.3.6",
+    "react-redux": "^8.0.2",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
     "save": "^2.5.0"
   }
 }

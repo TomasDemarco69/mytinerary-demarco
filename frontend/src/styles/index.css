@@ -121,6 +121,7 @@ code {
   white-space: nowrap;
   cursor: pointer;
   transition: all .3s;
+  text-align: center;
  }
  
  .Botoncito:active,
@@ -366,4 +367,9 @@ align-items: center;
     width: 40%;
   }
 
+}
+/* CITIES DETAILS */ 
+
+.imagenUsuario{
+  width: 8rem;
 }

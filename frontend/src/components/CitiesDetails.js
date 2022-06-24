@@ -1,22 +1,34 @@
-import React,{useState,useEffect} from "react";
-import axios from "axios";
+import React,{useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Link as LinkRouter } from "react-router-dom";
+import citiesActions from "../redux/actions/citiesActions";
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function CitiesDetails(){
+    // const {id}=useParams()
+    // const [cities,setCities]=useState([])
     const {id}=useParams()
-    const [cities,setCities]=useState([])
+    const dispatch = useDispatch()
 
     useEffect(()=>{
-        axios.get("http://localhost:4000/api/cities")
-        .then((datos)=>setCities(datos.data.response.cities))
+      dispatch(citiesActions.getAllCities()) 
+      // eslint-disable-next-line 
     },[])
+   
+    useEffect(()=>{
+        dispatch(citiesActions.getOneCity(id))
+        // eslint-disable-next-line 
+    },[])
+    
+    const cityItinerary = useSelector(store => store.citiesReducers.oneCity)
+    console.log(cityItinerary)
 
-    let city = cities.filter(city=>city._id===id)
+    const cities = useSelector(store=>store.citiesReducers.cities)
+    let card = cities.filter(city=>city._id===id)
 
     return(
         <div>
-            {city.length>0 && city.map((city,index)=>(
+            {card.length>0 && card.map((city,index)=>(
                 <div className="contenedorDetails" key="index" style={{background:`url(${city.image})`, height:"63vh", backgroundPosition:"center", backgroundSize:"cover", marginBottom:"1rem", marginTop:"2rem"}}>
                    
                    <h1 className="h1details"> {city.name} </h1> 
@@ -25,7 +37,28 @@ export default function CitiesDetails(){
                 </div> 
                 </div>
             ))}
+                <LinkRouter to="/cities" style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                <button className="Botoncito"> Back to Cities </button>
+                </LinkRouter>
+                <div>
+                
+                  {cityItinerary?.map((itinerary,index)=>
+                        <div key={index}>
+                          <div> 
+                            <h3 className="itinerario">{itinerary.title}</h3>
+                            <p>{itinerary.name}</p>
+                            <img className='imagenUsuario' src={itinerary.userImage} alt="imagen usuario" />
+                            <p>{itinerary.price}</p>
+                            <p>{itinerary.duration}</p>
+                            <p>{itinerary.hashtags}</p>
+                            <p>{itinerary.likes}</p>
+                            <p>{itinerary.activities}</p>
+                             
+                        </div>
+                        </div>
+                    )}
+                </div>
         </div>
     )
-
+    
 }

@@ -1,33 +1,30 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect} from "react";
 import {Link as LinkRouter} from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import citiesActions from "../redux/actions/citiesActions"
 
 export default function CitiesExplorer(){
-    const [cities,setCities]=useState([])
-    const [search,setSearch]=useState("")
-    const [filter,setFilter]=useState([])
+
+    const dispatch = useDispatch()
 
     useEffect(()=>{
-        axios.get("http://localhost:4000/api/cities")
-        .then((datos)=>setCities(datos.data.response.cities))
-        
+      dispatch(citiesActions.getAllCities()) 
+      // eslint-disable-next-line 
     },[])
-    console.log(cities);
-    useEffect(()=>{
-       let citiesFilter = cities?.filter(city=>city.name.toLowerCase().startsWith(search.trim().toLowerCase()))
-       setFilter(citiesFilter) 
-    },[search,cities])
+         
+    const cityFiltered = (event)=>{
+        dispatch(citiesActions.filterCities(event.target.value))
+    }
+   const filtered = useSelector(store=> store.citiesReducers.filterCities)
     
     return(
         <>
             <div className="CtnDetalles">
             <div> 
-            <input className="searchExplorer" placeholder="Search your place " type="text" onKeyUp={(e)=>{
-                setSearch(e.target.value)
-            }}/>
+            <input className="searchExplorer" placeholder="Search your place " type="text" onKeyUp={cityFiltered}/>
             </div>
-                {filter.length>0 ? filter.map(city=>(
+                {filtered?.length>0 ? filtered?.map(city=>(
                     <div className="ContenedorExplorer" key={city._id} style={{background:`url(${city.image})`, height:"40vh", width:"100%", backgroundPosition:"center", backgroundSize:"cover", marginBottom:"1rem", marginTop:"2rem"}}>
 
                         <h1 className="h1explorer"> {city.name}  </h1>
