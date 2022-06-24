@@ -25,7 +25,7 @@ export default function CitiesDetails(){
 
     const cities = useSelector(store=>store.citiesReducers.cities)
     let card = cities.filter(city=>city._id===id)
-
+    const price = []
     return(
         <div>
             {card.length>0 && card.map((city,index)=>(
@@ -37,28 +37,39 @@ export default function CitiesDetails(){
                 </div> 
                 </div>
             ))}
-                <LinkRouter to="/cities" style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
-                <button className="Botoncito"> Back to Cities </button>
-                </LinkRouter>
-                <div>
+                <div className="contenedorItinerario">
                 
                   {cityItinerary?.map((itinerary,index)=>
                         <div key={index}>
-                          <div> 
-                            <h3 className="itinerario">{itinerary.title}</h3>
-                            <p>{itinerary.name}</p>
+                          <div className="Itinerario"> 
+                          <div className="ImageUserItinerary">
+                            <p className="textItinerary"> {itinerary.name}</p>
                             <img className='imagenUsuario' src={itinerary.userImage} alt="imagen usuario" />
-                            <p>{itinerary.price}</p>
-                            <p>{itinerary.duration}</p>
-                            <p>{itinerary.hashtags}</p>
-                            <p>{itinerary.likes}</p>
-                            <p>{itinerary.activities}</p>
-                             
+                            </div>
+                            <h3 className="textItineraryTitle">{itinerary.title}</h3>
+                            <div className="">
+                            <div className="datosItineraryDer">
+                            <p className="textItinerary">Duration: {itinerary.duration}</p>
+                            <p className="textItinerary">Likes: {itinerary.likes}</p>
+                            <div className="priceItinerary" key={price} > Price: 
+                            <span key={price} > {Array(itinerary.price).fill(itinerary.price).map((price,index)=>{
+                                return(
+                                    <h1 key={index} className="billetito">💵</h1>
+                                )
+                            })} </span>
+                            
+                            </div>
+                            </div>
+                            <p className="textItineraryHashtags"> {itinerary.hashtags}</p>
+                            <p className="textItinerary">{itinerary.activities}</p>
+                            </div>
                         </div>
                         </div>
                     )}
                 </div>
+                <LinkRouter to="/cities" style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
+                <button className="Botoncito"> Back to Cities </button>
+                </LinkRouter>
         </div>
-    )
-    
+    )  
 }
