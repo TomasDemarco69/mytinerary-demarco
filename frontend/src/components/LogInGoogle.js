@@ -37,6 +37,5 @@ export default function LogInGoogle(){
     
     return(
         <div id='buttonDiv'></div>
-        //<div></div>
     )
 }

@@ -1,8 +1,8 @@
-import React from 'react'
-import {Snackbar,IconButton} from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
-import {connect} from 'react-redux'
-import {useDispatch} from 'react-redux'
+import React from 'react';
+import {Snackbar,IconButton} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 function Alert(props) {
     const dispatch = useDispatch()

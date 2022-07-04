@@ -76,7 +76,7 @@ function SignUp(props){
       </form>
         </>   
         :
-        <h1>selecciona para continuar</h1>
+        <h1>select to continue</h1>
         }
       
     </div>
