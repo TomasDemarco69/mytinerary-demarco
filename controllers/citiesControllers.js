@@ -31,7 +31,7 @@ addCity: async (req, res)=>{
     let city
     let error=null 
    
-    const{name, country,image,description}= req.body.data
+    const{ name, country,image,description}= req.body.data
     try{
         city= await new City({
             name: name,

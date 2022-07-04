@@ -5,7 +5,7 @@ function Fondo(){
         <div className="Fondo">
           <h1 className="Titulo">MYTYNERARY</h1>
           <div className="parrafo"> 
-          <img className="logoTitulo" src={logo}/>  
+          <img className="logoTitulo" src={logo} alt="logo"/>  
           <p className="textparrafo">FIND YOUR PERFECT TRIP, DESIGNED BY INSIDERS WHO KNOW AND LOVE THEIR CITIES!</p>
           </div>
         </div>

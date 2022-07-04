@@ -261,6 +261,7 @@ align-items: center;
  .boton-footer:hover {
   outline: 0;
   text-decoration: none;
+  color: black;
  }
  
  .Botoncito span {
@@ -452,4 +453,46 @@ align-items: center;
     
   }
 }
- 
+.Botoncito :hover{
+  color: black;
+  transform: scale(3em);
+}
+
+/* asdadadsad*/
+
+.signup-ctn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 65vh;
+  background-color: #39ebd3ad;
+}
+.loguitoNav{
+  border-radius: 25%;
+}
+.input-form{
+  margin: .5rem;
+  width: 85%;
+  height: 20px;
+}
+.form-signup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 45%;
+}
+div > .input-form{
+    width: 15rem;
+    height: 1.4rem;
+}
+.input-form> .input-form{
+  width: 75%;
+  height: 1.4rem;
+}
+@media (max-width: 800px) {
+  .input-form {
+    width: 140%;
+    
+  }
+}

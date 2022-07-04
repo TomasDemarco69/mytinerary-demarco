@@ -5,14 +5,14 @@ const citiesActions={
     getAllCities:()=>{
         return async (dispatch,getState)=>{
             const res = await axios.get("http://localhost:4000/api/cities")
-            console.log(res);
+            // console.log(res);
             dispatch({type:"ALLCITIES",payload: res.data.response.cities})
         }
     },
     getOneCity:(id)=>{
         return async (dispatch,getState)=>{
             const res = await axios.get(`http://localhost:4000/api/cities/${id}`)
-            console.log(res.data.response.itinerary);
+            // console.log(res.data.response.itinerary);
             dispatch({type:"ONECITY",payload: res.data.response.itinerary})
     }
    },

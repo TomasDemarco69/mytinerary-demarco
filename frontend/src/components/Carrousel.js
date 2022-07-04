@@ -14,7 +14,7 @@ const Gallery = () => {
   },[])
   
   const cities = useSelector(store=> store.citiesReducers.cities)
-  console.log(cities);
+  // console.log(cities);
   return (
     <>
     <h2 className='h2Carrousel'> Popular MyTineraries </h2>
