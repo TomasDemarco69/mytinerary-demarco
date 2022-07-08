@@ -7,6 +7,6 @@ const itineraryActions={
             const res = await axios.get("http://localhost:4000/api/itineraries")
             dispatch({type:"itineraries",payload: res.data.response})
         }
-    }
+    },
 }
 export default itineraryActions

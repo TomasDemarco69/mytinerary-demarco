@@ -7,7 +7,7 @@ import {Link as LinkRouter} from "react-router-dom"
 import { useSelector } from 'react-redux';
 import {useDispatch} from "react-redux"
 import userActions from '../redux/actions/userActions';
-import { width } from '@mui/system';
+
 
 const settings = [{to:"/signUp",name:"SignUp"}, {to:"/logIn",name:"LogIn"}];
 
@@ -35,7 +35,7 @@ const ResponsiveAppBar  = () =>{
     setAnchorElUser(null);
   };
  let user = useSelector(store=>store.userReducer.user)
- console.log(user);
+//  console.log(user);
   return (
     <AppBar position="static" sx={{backgroundColor:"black"}}>
       <Container maxWidth="xl">
@@ -115,7 +115,7 @@ const ResponsiveAppBar  = () =>{
               {!user?
                <AccountCircleIcon />
                :
-               <img className='loguitoNav' style= {{ width:"40px"}} src={user.imageUser} />
+               <img className='loguitoNav' style= {{ width:"40px"}} src={user.imageUser} alt="logo" />
                }
              
               </IconButton>

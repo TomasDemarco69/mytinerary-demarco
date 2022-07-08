@@ -77,6 +77,31 @@ removeItinerary: async (req,res) => {
         success: error ? false : true,
         error: error
     })
-  }
+  },
+  likeAndDislike: async(req, res)=>{
+
+    const id=req.params.id
+    console.log(id);
+    const user= req.user.id
+    console.log(user);
+    await Itinerary.findOne({_id:id})
+
+    .then(itinerary=>{
+
+        if(itinerary.likes.includes(user)){
+            Itinerary.findOneAndUpdate({_id:id}, {$pull:{likes:user}},{new:true})
+            .then(response=>res.json({succes:true,response:response.likes})
+            ).catch((error)=>console.log(error))
+        }
+        else {
+            Itinerary.findOneAndUpdate({_id:id}, {$push:{likes:user}},{new:true})
+            .then(response=>res.json({succes:true,response:response.likes})
+            ).catch((error)=>console.log(error))
+        }
+    }).catch((error)=>({
+        success:false,
+        response:error
+    }))
+}
 }
 module.exports = itineraryControllers

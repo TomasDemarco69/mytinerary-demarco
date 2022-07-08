@@ -1,27 +1,27 @@
 const User= require('../models/user')
-const bcryptjs= require('bcryptjs') //PAQUETE PARA ENCRIPTAR Y DESENCRIPTAR CONTRASEÑAS DE bcryptjs (bicriptjs)
-const crypto= require('crypto') //IMPORTO CRYPTO PAQUETE DE NODE
+const bcryptjs= require('bcryptjs') 
+const crypto= require('crypto') 
 const verification = require('./verification')
-const jwt = require('jsonwebtoken')//REQUIERO JWT
+const jwt = require('jsonwebtoken')
 
 const userControllers ={
     signUp:async (req,res)=>{
-        let {name,lastName,email,password,country,imageUser,role,from}= req.body.userData//RECIBE DATOS DESDE EL BODY
+        let {name,lastName,email,password,country,imageUser,role,from}= req.body.userData
 
         try{
            
             const userExists = await User.findOne({email})
             
             if(userExists) {
-                //SI ES DIFERENTE A -1 SIGNIFICA QUE EL USUARIO YA HIZO EL REGISTRO CON ESE METODO
+            
                 if(userExists.from.indexOf(from) !== -1){
                     res.json({
                         success:false,
                         from:from,
-                        message: 'You are already registered with'+' '+from+' '+',LOG IN!' //ya estas registrado con from, inicia sesion!
+                        message: 'You are already registered with'+' '+from+' '+',LOG IN!'
                     })
                 }
-                //SI ME DEVUELVE -1 QUIERE DECIR QUE NO ESTA REGISTRADO CON ESE METODO
+     
                 else{
                     const passwordHash= bcryptjs.hashSync(password, 10)
                     userExists.from.push(from)
@@ -49,7 +49,6 @@ const userControllers ={
                     
                 } 
             }
-                    //QUE EL USUARIO NO HAYA SIDO ENCONTRADO EN LA BASE DE DATOS => USUARIO NUEVO
                     else {
                         const passwordHash= bcryptjs.hashSync(password, 10)
                        
@@ -68,7 +67,7 @@ const userControllers ={
                             from : [from]
 
                         })
-                        // VERIFICO SI EL FROM ES DIFERENTE A MI FORMULARIO DE REGISTRO
+  
                         if(from !== 'signUp'){
                             await newUser.save()
                             res.json({
@@ -77,13 +76,13 @@ const userControllers ={
                                 message: `check ${email} and finish you Sign up` 
                             })
                         } 
-                        else{ //EL DATO VIENE DE UNA RED SOCIAL
+                        else{ 
                                 await newUser.save()
                                 await verification(email, newUser.uniqueString) 
                                 res.json({
                                     success: true,
                                     from:from,
-                                    message: 'Confirm your email verification'//Confirma tu verificacion de email
+                                    message: 'Confirm your email verification'
                                 })
                         }
                     } 
@@ -91,7 +90,7 @@ const userControllers ={
                 console.log(error)
                 res.json({
                     success: false,
-                    message:'Something went wrong, please try again later' //Algo ha salido mal, intenta de nuevo mas tarde
+                    message:'Something went wrong, please try again later' 
                 })
             }
         
@@ -118,7 +117,7 @@ logIn: async (req, res)=>{
                 }
                 await userExists.save()
                 const token= jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:60*60*24})
-                //console.log('token arriba'+ token);
+              
                 res.json({
                     success:true,
                     from:from,
@@ -136,8 +135,7 @@ logIn: async (req, res)=>{
         }
         else {
             if(passwordCoincide.length>0) {
-                //console.log('passwordCoincide' + passwordCoincide);
-                //console.log('userExists'+ userExists);
+         
                 if(userExists.userVerification){
                     const userData = {
                         id:userExists._id,
@@ -150,7 +148,7 @@ logIn: async (req, res)=>{
                     }
                     await userExists.save()
                     const token= jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:60*60*24})
-                    //console.log(token);
+            
                     res.json({
                         success:true,
                         from:from,
@@ -180,7 +178,7 @@ logIn: async (req, res)=>{
         console.log(error)
         res.json({
             success: false,
-            message:'Something went wrong, please try again later' //Algo ha salido mal, intenta de nuevo mas tarde
+            message:'Something went wrong, please try again later'
         })
     }
     
@@ -212,8 +210,7 @@ logIn: async (req, res)=>{
 
         verifyToken: async (req,res)=>{
 
-            //EL REQUERIMIENTO VIENE COMO REQ.USER PORQUE ASI LO MANDE DESDE PASSPORT
-            //EN LA RESPUESTA LE PASO LOS DATOS DEL USUARIO Y ESTO VA A LAS ACTIONS
+
             if(req.user) {
                 res.json({
                     success:true,
@@ -232,7 +229,7 @@ logIn: async (req, res)=>{
             else {
                 res.json({
                     success: false,
-                    message: 'Please do LOGIN again' //Por favor realize nuevamente LOGIN
+                    message: 'Please do LOGIN again' 
                 })
             }
         }

@@ -374,7 +374,9 @@ align-items: center;
 
 .imagenUsuario{
   width: 8rem;
-  border-radius: 50%;
+    min-height: 7.5rem;
+    border-radius: 50%;
+    transform: translate(12px, 23px);
 }
 .contenedorItinerario{
    display: flex;
@@ -464,7 +466,7 @@ align-items: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 65vh;
+  min-height: 65vh;
   background-color: #39ebd3ad;
 }
 .loguitoNav{
@@ -495,4 +497,23 @@ div > .input-form{
     width: 140%;
     
   }
+}
+/* ACTIVITIES
+/* ACTIVITIES
+/* ACTIVITIES */ 
+
+.view-more{
+  color: black;
+  width: 100%;
+  background-color: #00DDEB;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.Collapsible{
+  color: black;
+  width: 100%;
+  background-color: #00DDEB;
+  font-weight: 700;
+  cursor: pointer;
 }

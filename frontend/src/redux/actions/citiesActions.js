@@ -20,7 +20,29 @@ const citiesActions={
         return (dispatch, getState) =>{
             dispatch({type:"FILTERCITIES", payload: input})
         }
+    },
+    //likes
+    likeAndDislike:(id)=>{
+        // console.log(id)
+        const token= localStorage.getItem("token")
+        console.log(token);
+        return async()=>{
+            try{
+                let res= await axios.put(`http://localhost:4000/api/itineraries/like/${id}`, {},
+                {
+                    headers:{
+                        "Authorization":"Bearer "+ token
+                    }
+                })
+                //console.log(res)
+                return res
+
+            } catch(error){
+               // console.log(error)
+            }
+        }
     }
+    //comentarios
 
  }
 export default citiesActions
