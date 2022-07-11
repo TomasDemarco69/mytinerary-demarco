@@ -513,7 +513,85 @@ div > .input-form{
 .Collapsible{
   color: black;
   width: 100%;
-  background-color: #00DDEB;
+  background-color: aqua;
   font-weight: 700;
   cursor: pointer;
+}
+.ContenedorAct{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(199, 194, 194);
+  min-height: 33.3%;
+  width: 100%;
+  flex-wrap: wrap;
+  cursor: default;
+}
+.ActivityContenedor{
+  display: flex;
+  flex-direction: row;
+}
+.ActivityName{
+ color: black;
+ font-size: larger;
+}
+.ActivityPhoto {
+  width: 15rem;
+  height: 8rem;
+  margin-bottom: 0.7rem;
+}
+.noactivities{
+   color: white;
+   font-size: 1.4rem;
+}
+.ctnItinerarioPagina{
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 800px) {
+  .ActivityContenedor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  }
+ 
+ /* ACTIVITIES COMMENTS */
+.ctntextbutton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.textcomment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: WHITE;
+  border: solid black 1px;
+  resize: both;
+  width: 100%;
+}
+.sendbutton{
+  width: 4vw;
+  background-color: pink;
+  cursor: pointer;
+}
+
+.ctn-comment{
+  background-color: black;
+  height: 15vh;
+}
+.usercomment{
+  background-color: black;
+  height: 15vh;
+}
+.centertext{
+  background-color: black;
+  height: 15vh;
+}
+.ctn-texto{
+  background-color: black;
+  height: 15vh;
 }

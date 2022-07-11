@@ -7,6 +7,9 @@ import Collapsible from "react-collapsible";
 import { useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import commentsActions from "../redux/actions/commentsActions";
+import Comments from "../components/Comments";
+import Swal from 'sweetalert2';
 
 export default function CitiesDetails(){
     // const {id}=useParams()
@@ -26,12 +29,14 @@ export default function CitiesDetails(){
     },[reload])
     
     const cityItinerary = useSelector(store => store.citiesReducers.oneCity)
-    // console.log(cityItinerary)
+    console.log(cityItinerary)
 
     const cities = useSelector(store=>store.citiesReducers.cities)
-    // console.log(cities);
+    //console.log(cities);
     let card = cities.filter(city=>city._id===id)
     const price = []
+    const user=useSelector(store=>store.userReducer.user)
+    const [text, setText]= useState("")
 
     async function likeOrDislike(idItinerario){
         console.log(idItinerario)
@@ -39,9 +44,26 @@ export default function CitiesDetails(){
         console.log(res.data.response)
         setReload(!reload)
     }
-    const user=useSelector(store=>store.userReducer.user)
-    return(
-        <div>
+    // addComment
+
+    async function addComment(id){
+        const data={
+            itinerary:id,
+            comments:text
+        }
+        await dispatch(commentsActions.addComment(data))
+        setReload(R=>!R)
+        setText("")
+    }
+    const viewAlert=()=>{
+        Swal.fire({
+            icon:"error",
+            title:"Sorry, you must log in ",
+            timer:1500
+        })
+    }
+    return (
+        <div className="ctnItinerarioPagina">
             {card.length>0 && card.map((city,index)=>(
                 <div className="contenedorDetails" key={index} style={{background:`url(${city.image})`, height:"63vh", backgroundPosition:"center", backgroundSize:"cover", marginBottom:"1rem", marginTop:"2rem"}}>
                    
@@ -83,43 +105,59 @@ export default function CitiesDetails(){
                                )   
                             }
                             </div>
+
                             <h3 className="textItineraryTitle">{itinerary.title}</h3>
-                            <div className="">
-                            <div className="datosItineraryDer">
-                            <p className="textItinerary">Duration: {itinerary.duration}</p>
-                            <p className="textItinerary">Likes: {itinerary.likes}</p>
-                            <div className="priceItinerary" key={price} > Price: 
-                            <span key={price} > {Array(itinerary.price).fill(itinerary.price).map((price,index)=>{
-                                return(
-                                    <h1 key={index} className="billetito">💵</h1>
-                                )
-                            })} </span>
+                            <div className="adad">
+                              <div className="datosItineraryDer">
+                                <p className="textItinerary">Duration: {itinerary.duration}</p>
+                                   <div className="priceItinerary" key={price} > Price: 
+                                     <span key={price} > {Array(itinerary.price).fill(itinerary.price).map((price,index)=>{
+                                      return(
+                                     <h1 key={index} className="billetito">💵</h1>
+                                      )
+                                     })} 
+                                     </span>
                             
+                                  </div>
+                                </div>
+                                <p className="textItineraryHashtags"> {itinerary.hashtags}</p>
                             </div>
-                            </div>
-                            <p className="textItineraryHashtags"> {itinerary.hashtags}</p>
-                            <p className="textItinerary">{itinerary.activities}</p>
-                            </div>
+
                         </div>
                         <Collapsible trigger="View Activities" triggerWhenOpen="Close" transitionTime="1000" transitionCloseTime="100" className="view-more">
-                        <div style={{height:"40vh"}}>
-                            {itinerary.activities.map((activity,index)=>(
+                        <div className="ActivityContenedor">
 
-                                <div key={index}> 
-                                 <h1>{activity.activityName}</h1>
-                                 <img src={activity.photoAct} style={{width:"5rem"}} alt="photoActivity"/>
-
-
+                            {itinerary.activities?.map((activity,index)=>(
+                                <div className="ContenedorAct" key={index}> 
+                                 <h1 className="ActivityName">{activity.activityName}</h1>
+                                 <img className="ActivityPhoto" src={activity.photoAct} alt="photoActivity"/>
                                 </div> 
-
-                                
                                 ))}
-                                
-                                
+                        </div>
+
+                        <div className="commentWall">
+                            <p style={{color:"BLACK"}}>COMMENTS({itinerary.comments.length})</p>
+                            {itinerary?.comments.map((comment)=>
+                            <Comments comment={comment} key={comment._id} setReload={setReload} />
+                             )}
+                             {user?
+                             <div className="ctntextbutton">
+                                <div className="textcomment" contentEditable onInput={(event)=>setText(event.currentTarget.textContent)}></div>
+                                <button className="sendbutton" onClick={()=>addComment(itinerary._id)}>Send</button>
+                              </div> 
+                               :
+                               <div className="ctntextbutton">
+                                <div className="textcomment" contentEditable sx={{width:"80%", backgroundColor:"white"}}></div>
+                                <button className="sendbutton" onClick={()=>viewAlert()}>Send</button>
+                                </div>
+
+                             }
                         </div>
                         </Collapsible>
                         </div>
                     )}
+                
+                                
                 </div>
                 <LinkRouter to="/cities" style={{display:"flex", justifyContent:"center",alignItems:"center"}}>
                 <button className="Botoncito"> Back to Cities </button>

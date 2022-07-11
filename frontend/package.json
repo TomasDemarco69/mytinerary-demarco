@@ -25,6 +25,7 @@
     "react-scroll-to-top": "^1.0.8",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
+    "sweetalert2": "^11.4.20",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -65,3 +65,15 @@ Router.route('/logInToken')
     .get(passport.authenticate('jwt', {session: false}), verifyToken)
 
 module.exports= Router 
+
+//comments
+
+const commentsControllers= require('../controllers/commentsControllers')
+const {addComment,modifyComment,deleteComment} = commentsControllers
+
+Router.route("/comment")
+.post(passport.authenticate('jwt',{session: false}),addComment)
+.put(passport.authenticate('jwt',{session:false}),modifyComment)
+
+Router.route("/comment/:id")
+.put(passport.authenticate('jwt',{session:false}),deleteComment)

@@ -1,5 +1,5 @@
 import {React} from "react";
-import "./styles/index.css"
+import "./styles/index.css";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import Index from "./paginas/Index"
 import Cities from "./paginas/Cities"
@@ -11,8 +11,10 @@ import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import  Alert  from '../src/components/Alert';
 import { connect } from 'react-redux';
-import {useEffect} from "react"
-import userActions from "./redux/actions/userActions"
+import {useEffect} from "react";
+import userActions from "./redux/actions/userActions";
+import swal from 'sweetalert2';
+window.Swal = swal;
 
 
 

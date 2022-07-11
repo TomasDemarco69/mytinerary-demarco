@@ -26,7 +26,7 @@ function LogIn(props){
                 <img src={logo} alt="logo" style={{height:'50px', width:'50px'}} />
                 <h1 style={{fontWeight:'900', color:'black', marginBottom:'10px'}}>Sign in MyTinerary now</h1>
                 <input className='input-form'  name='email' type="email"  placeholder='Email'/>
-                <input className='input-form'  name='password' type="text"  placeholder='Password'/>
+                <input className='input-form'  name='password' type="password"  placeholder='Password'/>
                 <button className='form-env' type="submit" value="submit">LOG IN</button>
                 <div style={{marginTop:'1rem'}}>
                     <LogInGoogle/>

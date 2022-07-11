@@ -8,7 +8,8 @@ const itinerarySchema = new mongoose.Schema ({
     duration:{type:String, required:true},
     hashtags:[{type:String, required:true}],
     likes:{type:Array, required:true},
-    activities:[{type:mongoose.Types.ObjectId, ref:"activities"}]
+    activities:[{type:mongoose.Types.ObjectId, ref:"activities"}],
+    comments: [{comment:{type:String, required:true}, user:{type:mongoose.Types.ObjectId, required:true, ref:'user'}}]
 })
 const Itinerary = mongoose.model ("itinerary", itinerarySchema)
 module.exports = Itinerary

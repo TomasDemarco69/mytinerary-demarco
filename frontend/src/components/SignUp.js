@@ -63,7 +63,7 @@ function SignUp(props){
       
         <input className='input-form'  name='email' type="email"  placeholder='Email'/>
         
-        <input className='input-form'  name='password' type="text"  placeholder='Password'/>
+        <input className='input-form'  name='password' type="password"  placeholder='Password'/>
         <input className='input-form'  name='imageUser' type="text"  placeholder='Profile Pic (url)'/>
         <select className='input-form' style={{cursor:'pointer'}} name='country'>
                   {roles.map((rol,index)=>
